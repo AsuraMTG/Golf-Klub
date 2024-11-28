@@ -4,13 +4,9 @@ const app = express();
 
 import mysql from 'mysql2';
 
-
 import dotenv from 'dotenv';
-dotenv.config();
 
-/*\
-app.use(express.json());
-\*/
+dotenv.config();
 
 const connection = mysql.createConnection({
     host: process.env.DB_HOST,
@@ -28,10 +24,6 @@ connection.connect((err) => {
     console.log('Connected to the MySQL server.');
 });
 
-
-// ROUTES //
-//const route = express.Router();
-
 import routeBefizetes from './routes/befizetes.js';
 app.use("/golf/befizetes", routeBefizetes);
 
@@ -44,23 +36,24 @@ app.use("/golf/tagsag", routeTagsag);
 import routeUgyfel from './routes/ugyfel.js';
 app.use("/golf/ugyfel", routeUgyfel);
 
-
-/*\
-// http://localhost:3000/ugyfelek
-app.get('/ugyfelek', (req, res) => {
-    let sql = "SELECT `uazon`,`unev`,`uemail`,`utel`,`ujelszo`,`uszuletett` FROM `ugyfelek` WHERE 1";
-    connection.query(sql, function (err, rows) {
-        if (err) {
-            console.error(err);
-            res.status(500).send(`Database error: ${err.stack}`);
-            return;
-        };
-        res.status(201).json(rows);
-        res.send(rows);
-    });
-});
-\*/
-
 app.listen(3000, () => {
     console.log('A szerver elindult a http://localhost:3000 porton.');
 });
+
+/*\
+http://localhost:3000/golf/register
+http://localhost:3000/golf/login
+http://localhost:3000/golf/ugyfel
+http://localhost:3000/golf/ugyfel/:uazon
+http://localhost:3000/golf/ugyfel/:uazon
+http://localhost:3000/golf/befizetes
+http://localhost:3000/golf/befizetes/:uazon/:bido
+http://localhost:3000/golf/befizetes/:uazon
+http://localhost:3000/golf/ugyfelek
+http://localhost:3000/golf/tagsag/:uazon/:tszint
+http://localhost:3000/golf/tagsag/:uazon
+http://localhost:3000/golf/jelenlet
+http://localhost:3000/golf/jelenlet/:uazon
+http://localhost:3000/golf/jelenlet/:uazon
+http://localhost:3000/golf/jelenlet/:uazon
+\*/

@@ -8,9 +8,22 @@ router.get('/', (req, res) => {
   res.send('Ugyfel útvonal');
 });
 
-router.get('/:uazon', (req, res) => {
-    let uazon = req.params.uazon;
-    res.send(uaozn + 'Ugyfel útvonal');
-  });
+router.put('/:uazon', (req, res) => {
+    const { uazon } = req.params;
+    res.send(`Ugyfel adatainak lekérése, azonosító: ${uazon}`);
+});
+
+router.delete('/:uazon', (req, res) => {
+    const { uazon } = req.params;
+    res.send(`Ugyfel adatainak lekérése, azonosító: ${uazon}`);
+});
+
+router.post('/register', (req, res) => {
+    res.send('Regisztrációs útvonal');
+});
+
+router.post('/login', (req, res) => {
+    res.send('Bejelentkezési útvonal');
+});
 
 export default router;
