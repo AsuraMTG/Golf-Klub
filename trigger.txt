@@ -1,6 +1,6 @@
 DELIMITER $$
 CREATE TRIGGER ujUgyfel AFTER INSERT ON ugyfelek FOR EACH ROW
 BEGIN
-INSERT INTO `tagsagok` (`uazon`, `tkezdet`, `tveg`, `tszint`) VALUES (LAST_INSERT_ID(), CURRENT_DATE, NULL, 'bronz');
+INSERT INTO `tagsagok` (`uazon`, `tkezdet`, `tveg`, `tszint`) VALUES (NEW.uazon, CURRENT_DATE, NULL, 'bronz');
 END$$
-DELIMITER;
+DELIMITER ;
