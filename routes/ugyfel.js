@@ -1,11 +1,15 @@
 import express from 'express';
 
+import * as db from '../db.js';
+
 const router = express.Router();
 
 export const routes = express.Router();
 
-router.get('/', (req, res) => {
-  res.send('Ugyfel útvonal');
+router.get('/', async (req, res) => {
+    let ugyfelek = await db.getUgyfelek();
+    res.header('Content-Type', 'application/json');
+    res.status(201).send(ugyfelek);
 });
 
 router.put('/:uazon', (req, res) => {
