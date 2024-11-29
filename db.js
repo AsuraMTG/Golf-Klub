@@ -20,8 +20,14 @@ connection.connect((err) => {
     console.log('Connected to the MySQL server.');
 });
 
-export async function getUgyfelek (req, res) {
+export async function getUgyfelek () {
     let sql = 'SELECT * FROM ugyfelek';
     const [result] = await connection.execute(sql);
+    return result;
+};
+
+export async function getUgyfel (id) {
+    let sql = 'SELECT * FROM ugyfelek WHERE uazon = ?';
+    const [result] = await connection.execute(sql, [id]);
     return result;
 };
