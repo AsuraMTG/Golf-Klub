@@ -1,1 +1,1 @@
-npm i express mysql2 dotenv
+npm i express mysql2 dotenv body-parser
