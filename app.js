@@ -4,6 +4,9 @@ const app = express();
 
 app.use(express.json());
 
+import bodyParser from 'body-parser';
+app.use(bodyParser.urlencoded({ extended: true }));
+
 import routeBefizetes from './routes/befizetes.js';
 app.use("/golf/befizetes", routeBefizetes);
 
